@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: warehouse
+    schema: dbo
+
+    tables:
+      - name: Date
+      - name: Time
+      - name: Geography
+      - name: Medallion
+      - name: HackneyLicense
+      - name: Trip
+      - name: Weather
