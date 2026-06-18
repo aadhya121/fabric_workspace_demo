@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: source_warehouse
+    database: warehouse
+    schema: dbo
+
+    tables:
+      - name: Date

@@ -1,0 +1,2 @@
+-- Auto Generated (Do not modify) A352AAC47AB40FCE50A453B1AD8CD40EB13E3DA6150ED7642905A074ADCB5F00
+create view "dbo"."silver_weather" as SELECT * from "warehouse"."dbo"."bronze_weather" where AvgTemperatureFahrenheit IS NOT NULL and PrecipitationInches IS NOT NULL;;

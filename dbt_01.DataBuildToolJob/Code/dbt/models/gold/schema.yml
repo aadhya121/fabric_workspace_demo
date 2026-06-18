@@ -1,0 +1,122 @@
+version: 2
+
+models:
+
+  - name: dim_date
+    description: "Date Dimension"
+
+    columns:
+      - name: DateID
+        description: "Primary Key"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_time
+    description: "Time Dimension"
+
+    columns:
+      - name: TimeID
+        description: "Primary Key"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_geography
+    description: "Geography Dimension"
+
+    columns:
+      - name: GeographyID
+        description: "Primary Key"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_medallion
+    description: "Medallion Dimension"
+
+    columns:
+      - name: MedallionID
+        description: "Primary Key"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_hackney_license
+    description: "Hackney License Dimension"
+
+    columns:
+      - name: HackneyLicenseID
+        description: "Primary Key"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_trip
+    description: "Fact table for taxi trips"
+
+    columns:
+
+      - name: DateID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: DateID
+
+      - name: MedallionID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_medallion')
+              field: MedallionID
+
+      - name: HackneyLicenseID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_hackney_license')
+              field: HackneyLicenseID
+
+      - name: PickupTimeID
+        tests:
+          - relationships:
+              to: ref('dim_time')
+              field: TimeID
+
+      - name: DropoffTimeID
+        tests:
+          - relationships:
+              to: ref('dim_time')
+              field: TimeID
+
+      - name: PickupGeographyID
+        tests:
+          - relationships:
+              to: ref('dim_geography')
+              field: GeographyID
+
+      - name: DropoffGeographyID
+        tests:
+          - relationships:
+              to: ref('dim_geography')
+              field: GeographyID
+
+  - name: fct_weather
+    description: "Fact table for weather"
+
+    columns:
+
+      - name: DateID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: DateID
+
+      - name: GeographyID
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: GeographyID
