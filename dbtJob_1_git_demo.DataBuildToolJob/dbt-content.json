@@ -1,11 +1,7 @@
 {
   "project": {
-    "projectType": "GitHub",
-    "branch": "dev",
-    "folderPath": "dbt",
-    "externalReferences": {
-      "connection": "1afb262b-3960-4afa-8f25-d231506fc5d8"
-    }
+    "projectType": "OneLake",
+    "folderPath": "dbt"
   },
   "profile": {
     "profileType": "DataWarehouse",
@@ -25,8 +21,10 @@
   "command": {
     "operation": "build",
     "arguments": {
+      "select": "",
       "exclude": "",
-      "threads": 4
+      "threads": 4,
+      "selectorName": ""
     }
   }
 }
